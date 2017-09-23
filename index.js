@@ -1,27 +1,29 @@
-// Require in the modules needed for the server
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const multer = require('multer');
-const moment = require('moment');
-const routes = require('./routes/index');
-const users = require('./routes/users');
-const expressValidator = require('express-validator');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var multer = require('multer');
+var upload = multer({dest: 'uploads/'});
+var moment = require('moment');
+var expressValidator = require('express-validator');
+
 var mongo = require('mongodb');
 var db = require('monk')('localhost/nodeblog');
 
-const port = process.env.PORT || 3000;
-const app = express();
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
-// Setup the view engine
+var app = express();
+
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// Setting up all the middleware for the project
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -57,15 +59,25 @@ app.use(
   })
 );
 
-// Need to make the db accessible to our router
-app.use(() => {
+// Connect-Flash
+app.use(require('connect-flash')());
+app.use(function(req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+// Make our db accessible to our router
+app.use(function(req, res, next) {
   req.db = db;
   next();
 });
+
 app.use('/', routes);
 app.use('/users', users);
-app.use(() => {
-  const err = new Error('Not Found');
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
