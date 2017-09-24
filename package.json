@@ -19,7 +19,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
-    "jade": "~1.11.0",
+    "jade": "^1.11.0",
     "moment": "^2.18.1",
     "mongodb": "*",
     "monk": "git+https://github.com/vccabral/monk.git",
