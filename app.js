@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var multer = require('multer');
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({dest: 'uploads/'});
 var expressValidator = require('express-validator');
+var mongoURI = require('./config/keys').mongoURI;
 
 var mongo = require('mongodb');
-var db = require('monk')('localhost/nodeblog');
+
+var db = require('monk')(mongoURI);
 
 var routes = require('./routes/index');
 var posts = require('./routes/posts');
@@ -20,10 +22,10 @@ var app = express();
 
 app.locals.moment = require('moment');
 
-app.locals.truncateText = function(text, length){
+app.locals.truncateText = function(text, length) {
   var truncatedText = text.substring(0, length);
   return truncatedText;
-}
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,47 +35,50 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
-app.use(session({
+app.use(
+  session({
     secret: 'secret',
     saveUninitialized: true,
-    resave: true
-}));
+    resave: true,
+  })
+);
 
 // Express Validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
+app.use(
+  expressValidator({
+    errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.'),
+        root = namespace.shift(),
+        formParam = root;
 
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
+      while (namespace.length) {
+        formParam += '[' + namespace.shift() + ']';
+      }
+      return {
+        param: formParam,
+        msg: msg,
+        value: value,
+      };
+    },
+  })
+);
 
 // Connect-Flash
 app.use(require('connect-flash')());
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
 
 // Make our db accessible to our router
-app.use(function(req,res,next){
-    req.db = db;
-    next();
+app.use(function(req, res, next) {
+  req.db = db;
+  next();
 });
 
 app.use('/', routes);
@@ -96,7 +101,7 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: err
+      error: err,
     });
   });
 }
@@ -107,9 +112,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
-    error: {}
+    error: {},
   });
 });
-
 
 module.exports = app;

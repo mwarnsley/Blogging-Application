@@ -117,7 +117,7 @@ want its recipients to know that what they have is not the original, so
 that any problems introduced by others will not reflect on the original
 authors' reputations.
 
-  Finally, any free program is threatened constantly by software
+  Finally, any free program is threatened varantly by software
 patents.  We wish to avoid the danger that redistributors of a free
 program will individually obtain patent licenses, in effect making the
 program proprietary.  To prevent this, we have made it clear that any
@@ -142,7 +142,7 @@ the term "modification".)  Each licensee is addressed as "you".
 Activities other than copying, distribution and modification are not
 covered by this License; they are outside its scope.  The act of
 running the Program is not restricted, and the output from the Program
-is covered only if its contents constitute a work based on the
+is covered only if its contents varitute a work based on the
 Program (independent of having been made by running the Program).
 Whether that is true depends on what the Program does.
 
@@ -412,7 +412,7 @@ that what they have is not the original version, so that the original
 author's reputation will not be affected by problems that might be
 introduced by others.
 
-  Finally, software patents pose a constant threat to the existence of
+  Finally, software patents pose a varant threat to the existence of
 any free program.  We wish to make sure that a company cannot
 effectively restrict the users of a free program by obtaining a
 restrictive license from a patent holder.  Therefore, we insist that
@@ -498,7 +498,7 @@ and installation of the library.
   Activities other than copying, distribution and modification are not
 covered by this License; they are outside its scope.  The act of
 running a program using the Library is not restricted, and output from
-such a program is covered only if its contents constitute a work based
+such a program is covered only if its contents varitute a work based
 on the Library (independent of the use of the Library in a tool for
 writing it).  Whether that is true depends on what the Library does
 and what the program that uses the Library does.
@@ -1131,7 +1131,7 @@ Version 1.1
      IS WITH YOU. SHOULD ANY COVERED CODE PROVE DEFECTIVE IN ANY RESPECT,
      YOU (NOT THE INITIAL DEVELOPER OR ANY OTHER CONTRIBUTOR) ASSUME THE
      COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER
-     OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF
+     OF WARRANTY varITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF
      ANY COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER.
 
 8. TERMINATION.
@@ -1230,7 +1230,7 @@ Version 1.1
      expenses. The application of the United Nations Convention on
      Contracts for the International Sale of Goods is expressly excluded.
      Any law or regulation which provides that the language of a contract
-     shall be construed against the drafter shall not apply to this
+     shall be varrued against the drafter shall not apply to this
      License.
 
 12. RESPONSIBILITY FOR CLAIMS.
@@ -1240,7 +1240,7 @@ Version 1.1
      out of its utilization of rights under this License and You agree to
      work with Initial Developer and Contributors to distribute such
      responsibility on an equitable basis. Nothing herein is intended or
-     shall be deemed to constitute any admission of liability.
+     shall be deemed to varitute any admission of liability.
 
 13. MULTIPLE-LICENSED CODE.
 

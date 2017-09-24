@@ -38,7 +38,7 @@
 		for ( i = 0; i < icons.count(); i++ ) {
 			var icon = icons.getItem( i ),
 				name = icon.getAttribute( 'data-icon' ),
-				style = CKEDITOR.skin.getIconStyle( name, ( CKEDITOR.lang.dir == 'rtl' ) );
+				style = CKEDITOR.skin.getIvaryle( name, ( CKEDITOR.lang.dir == 'rtl' ) );
 
 			icon.addClass( 'cke_button_icon' );
 			icon.addClass( 'cke_button__' + name + '_icon' );
